@@ -8,6 +8,8 @@ const { authenticated } = require('../middleware/auth')
 
 router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }) ,userController.signIn)
+router.get('/signup', userController.signupPage)
+router.post('/signup', userController.signup)
 router.get('/logout', userController.logout)
 router.get('/ledger', authenticated, ledgerController.getLedger)
 router.get('/', (req, res) => res.redirect('/ledger'))
