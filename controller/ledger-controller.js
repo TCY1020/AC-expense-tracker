@@ -20,15 +20,16 @@ const ledgerController = {
       })
       .catch(err => next(err))
   },
-  createExpend: (req, res, next) =>{
+  createExpend: (req, res, next) => {
     Category.find()
     .lean()
     .sort({ _id: 'asc' })
     .then(categories => res.render('create-ledger', { categories }))
   },
-  postExpend: (req, res, next) =>{
+  postExpend: (req, res, next) => {
     const userId = req.user._id
     const { name, date, categoryId , amount} = req.body
+    if (!name || !date || !categoryId || !amount) throw new Error("All the form is required!")
     Record.create({
       name,
       date,
@@ -38,7 +39,22 @@ const ledgerController = {
     })
       .then(() => res.redirect('/'))
       .catch(error => console.log(error))
-  }
+  },
+  editExpend: (req, res, next) => {
+    return Promise.all([
+      Record.findById(req.params.id)
+        .lean(),
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' })
+    ])
+      .then(([userRecord, categories]) => {
+        if (!userRecord) throw new Error("Record doesn't exist!")
+        res.render('edit-ledger', { userRecord, categories })
+      })
+      .catch(error => console.log(error))
+  },
+  
 }
 
 module.exports = ledgerController

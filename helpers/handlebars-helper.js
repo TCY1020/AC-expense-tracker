@@ -5,7 +5,7 @@ const helpers = handlebars.registerHelper('formatDate', (date) => {
   const year = formattedDate.getFullYear();
   const month = formattedDate.getMonth() + 1;
   const day = formattedDate.getDate();
-  return year + '/' + month + '/' + day;
+  return year + '-' + month + '-' + day;
 });
 
 

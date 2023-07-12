@@ -9,6 +9,7 @@ const { generalErrorHandler } = require('../middleware/error-handler')
 
 router.get('/ledger/create', authenticated, ledgerController.createExpend)
 router.post('/ledger/create', authenticated, ledgerController.postExpend)
+router.get('/ledger/:id/edit', authenticated, ledgerController.editExpend)
 router.get('/ledger', authenticated, ledgerController.getLedger)
 router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }) ,userController.signIn)
