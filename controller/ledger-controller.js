@@ -19,6 +19,25 @@ const ledgerController = {
         return res.render('index', { userRecord, categories, totalAmount })
       })
       .catch(err => next(err))
+  },
+  createExpend: (req, res, next) =>{
+    Category.find()
+    .lean()
+    .sort({ _id: 'asc' })
+    .then(categories => res.render('create-ledger', { categories }))
+  },
+  postExpend: (req, res, next) =>{
+    const userId = req.user._id
+    const { name, date, categoryId , amount} = req.body
+    Record.create({
+      name,
+      date,
+      categoryId,
+      amount,
+      userId
+    })
+      .then(() => res.redirect('/'))
+      .catch(error => console.log(error))
   }
 }
 
