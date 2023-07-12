@@ -62,7 +62,7 @@ db.once('open', () => {
               .lean()
               .then(category =>{
                 const categoryId = category._id
-                Record.create({
+                return Record.create({
                   ...recordList[seederNumber],
                   userId,
                   categoryId

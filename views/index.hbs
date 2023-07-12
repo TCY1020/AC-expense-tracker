@@ -1,1 +1,45 @@
-<h1>expense-tracker</h1>
+<div class="form-row mb-3">
+  <label class="form-label" for="categoryId">Category</label>
+  <select class="form-control" id="categoryId" name="categoryId">
+    {{#each categories}}
+    <option value="{{this.id}}">{{{this.icon}}}{{this.name}}</option>
+    {{/each}}
+  </select>
+</div>
+<div class="form-row mb-3">
+  <h1>總金額:{{totalAmount}}</h1>
+</div>
+<div class="form-row mb-3">
+  <table class="table align-middle">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each userRecord}}
+      <tr>
+        <td>{{{this.categoryId.icon}}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.amount}}</td>
+        <td>
+          <button type="button" class="btn btn-link">
+            <a class="btn btn-link link-primary" href="/ledger/{{this.id}}/edit">
+              修改
+            </a>
+          </button>
+          <form action="/admin/ledger/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-link link-danger"
+              onclick="return confirm(`確定要刪除{{this.name}}嗎?`)">刪除</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
