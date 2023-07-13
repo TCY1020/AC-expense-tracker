@@ -38,7 +38,7 @@ const ledgerController = {
       userId
     })
       .then(() => res.redirect('/'))
-      .catch(error => console.log(error))
+      .catch(err => next(err))
   },
   editExpend: (req, res, next) => {
     return Promise.all([
@@ -52,9 +52,30 @@ const ledgerController = {
         if (!userRecord) throw new Error("Record doesn't exist!")
         res.render('edit-ledger', { userRecord, categories })
       })
-      .catch(error => console.log(error))
+      .catch(err => next(err))
   },
-  
+  putExpend: (req, res, next) => {
+    const { name, date, categoryId, amount } = req.body
+    if (!name) throw new Error('Record name is required!')
+    return Record.findByIdAndUpdate(
+      req.params.id,{
+        name,
+        date,
+        categoryId,
+        amount
+      })
+      .then(() => res.redirect(`/ledger`))
+      .catch(err => next(err))
+  },
+  deleteExpend: (req, res, next) => {
+    return Record.findById(req.params.id)
+      .then(userRecord => {
+        if (!userRecord) throw new Error("Record did't exist!")
+        userRecord.deleteOne()
+      })
+      .then(() => res.redirect('/'))
+      .catch(err => next(err))
+  }
 }
 
 module.exports = ledgerController
