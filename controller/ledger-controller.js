@@ -20,6 +20,23 @@ const ledgerController = {
       })
       .catch(err => next(err))
   },
+  sortExpend: (req, res, next) => {
+    const userId = req.user._id
+    const categoryId = req.query.categoryId
+    let totalAmount = 0
+    return Promise.all([
+      Record.find({ userId, categoryId })
+        .populate('categoryId')
+        .lean(),
+      Category.find()
+        .lean()
+        .sort({ _id: 'asc' }),
+    ])
+      .then(([userRecord, categories]) => {
+        userRecord.forEach(record => totalAmount += record.amount)
+        return res.render('index',{ userRecord, categories, totalAmount })
+      })
+  },
   createExpend: (req, res, next) => {
     Category.find()
     .lean()
