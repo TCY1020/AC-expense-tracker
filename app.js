@@ -3,10 +3,11 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
+const handlebars = require('handlebars')
 const passport = require('./config/passport')
 const router = require('./router')
 const { getUser } = require('./helpers/auth-helper')
-const { helpers } = require('./helpers/handlebars-helper')
+
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -15,10 +16,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 require('./config/mongoose')
 const app = express()
-const port = 3000
+const port = process.env.PORT
+// 引用npm handlebars-dateformat調整日期格式
+handlebars.registerHelper('dateFormat', require('handlebars-dateformat'))
 
-
-app.engine('hbs', exphbs({ extname: '.hbs', helpers }))
+app.engine('hbs', exphbs({ extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(session({

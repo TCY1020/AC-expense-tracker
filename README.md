@@ -28,7 +28,10 @@
   ```
 6. 若看見此行訊息代表種子資料創建成功
  ```
-  所有使用者與記帳資料創建完成
+  mongodb connected!
+  done.
+  mongodb connected!
+  Record done.
   ```
 7. 安裝完畢後，繼續輸入
 + 一般啟動:
