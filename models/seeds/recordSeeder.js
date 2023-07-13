@@ -29,8 +29,8 @@ const SEED_USER = [{
 },
 {
   name: '野原向日葵',
-  email: 'ddd@ddd.com',
-  password: 'ddd',
+  email: 'ccc@ccc.com',
+  password: 'ccc',
   recordNumber: [5]
 }
 ]
