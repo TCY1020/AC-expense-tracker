@@ -12,9 +12,9 @@
     "category": "餐飲食品"
   },
   {
-    "name": "捷運",
+    "name": "油錢",
     "date": "2023-04-23",
-    "amount": 120,
+    "amount": 1000,
     "category": "交通出行"
   },
   {
@@ -24,9 +24,9 @@
     "category": "休閒娛樂"
   },
   {
-    "name": "租金",
+    "name": "房屋貸款",
     "date": "2023-04-01",
-    "amount": 25000,
+    "amount": 14000,
     "category": "家居物業"
   },
   {

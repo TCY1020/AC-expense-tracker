@@ -13,13 +13,13 @@ const SEED_USER = [{
   name: '"野原美冴',
   email: 'qwe@qwe.com',
   password: 'qwe',
-  recordNumber: [0, 1, 2, 4]
+  recordNumber: [0, 1, 2]
 },
 {
-  name: '野原廣智',
+  name: '野原廣志',
   email: 'aaa@aaa.com',
   password: 'aaa',
-  recordNumber: [0, 1, 2]
+  recordNumber: [0, 1, 2, 4]
 },
 {
   name: '野原新之助',

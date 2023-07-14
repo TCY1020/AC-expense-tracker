@@ -9,10 +9,10 @@ const userController = {
     req.flash('success_messages', '登入成功')
     res.redirect('ledger')
   },
-  logout: (req, res, next) => {
-    req.flash('success_messages', '登出成功!')
+  logout: (req, res, next) => {    
     req.logout(err =>{
       if(err) {return next(err)}
+      req.flash('success_messages', '登出成功!')
       res.redirect('/signin')
     })
   },
