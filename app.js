@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 require('./config/mongoose')
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 // 引用npm handlebars-dateformat調整日期格式
 handlebars.registerHelper('dateFormat', require('handlebars-dateformat'))
 
