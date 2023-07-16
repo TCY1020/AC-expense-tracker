@@ -24,7 +24,7 @@ app.engine('hbs', exphbs({ extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || "ThisIsMySecret",
   resave: false,
   saveUninitialized: false
 }))
