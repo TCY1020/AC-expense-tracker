@@ -1,25 +1,18 @@
 <div class="form-row mb-3">
   <label class="form-label" for="name">Name</label>
-  <input class="form-control" type="text" name="name" id="name" placeholder="Enter name" value="{{userRecord.name}}"
+  <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+</div>
+<div class="form-row mb-3">
+  <label class="form-label" for="email">Email</label>
+  <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+</div>
+<div class="form-row mb-3">
+  <label class="form-label" for="password">Password</label>
+  <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+</div>
+<div class="form-row mb-3">
+  <label class="form-label" for="passwordCheck">Password Check</label>
+  <input type="password" id="passwordCheck" name="passwordCheck" class="form-control" placeholder="Password Check"
     required>
 </div>
-<div class="form-row mb-3">
-  <label class="form-label" for="date">日期</label>
-  <input class="form-control" type="date" name="date" id="openingHours" placeholder="Enter date"
-    value="{{userRecord.date}}">
-</div>
-<div class="form-row mb-3">
-  <label class="form-label" for="categoryId">Category</label>
-  <select class="form-control" id="categoryId" name="categoryId">
-    {{#each categories}}
-    <option value="{{this._id}}">{{this.name}}</option>
-    {{/each}}
-  </select>
-</div>
-<div class="form-row mb-3">
-  <label class="form-label" for="tel">Amount</label>
-  <input class="form-control" type="text" name="amount" id="amount" placeholder="Enter amount"
-    value="{{userRecord.amount}}">
-</div>
-<button type="submit" class="btn btn-outline-warning">Submit</button>
-<a class="btn btn-outline-secondary" href="javascript:history.back()">Back</a>
+<button class="btn btn-primary btn-block" type="submit" style="background-color:#772953">Submit</button>
