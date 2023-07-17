@@ -1,4 +1,4 @@
-<div class="form-row mb-3">
+<div class="form-row mb-3">  
   <form action="/ledger/sort" id="sort-form" method="get">
     <label class="form-label" for="categoryId">Category</label>
     <select class="form-control" id="categoryId" name="categoryId" onchange="submit()">
@@ -8,6 +8,9 @@
       {{/each}}
     </select>
   </form>
+</div>
+<div class="d-flex justify-content-end">
+<a href="/" class="btn btn-outline-info ">清除篩選</a>
 </div>
 <div class="form-row mb-3">
   <h1>總金額:{{totalAmount}}</h1>
